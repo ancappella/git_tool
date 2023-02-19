@@ -37,7 +37,19 @@ if [ ${file} ]; then
 else
   git add .
 fi
-git commit -m ${message}
+if [ ${message} ]; then
+  git commit -m ${message}
+else
+  git commit -m ""
+fi
+
 git push
 
+git pull
 
+git merge --no-ff commit --log origin/main -m "git merge origin/main"
+git merge --no-of commit --log ${branch} -m "merge ${branch}"
+
+git push
+echo "切回开发分支"
+git checkout ${branch}
